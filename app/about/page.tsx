@@ -1,42 +1,46 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
+
 export default function AboutPage() {
+    const { t } = useLanguage();
+
     return (
         <div className="bg-white dark:bg-gray-900">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                        About Me
+                        {t.about.title}
                     </h1>
                     <p className="text-xl text-gray-600 dark:text-gray-400">
-                        Software Engineer | Problem Solver | Lifelong Learner
+                        {t.about.subtitle}
                     </p>
                 </div>
 
                 {/* Introduction */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Introduction</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.about.introduction.title}</h2>
                     <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                        Hi! I'm Robin Kuo, a passionate software engineer with experience in building innovative solutions
-                        and contributing to open-source projects. I love exploring new technologies and sharing my knowledge
-                        through writing and teaching.
+                        {t.about.introduction.content}
                     </p>
                 </section>
 
                 {/* Experience */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Experience</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.about.experience.title}</h2>
                     <div className="space-y-8">
                         <div className="border-l-4 border-blue-600 pl-6">
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                Software Engineer
+                                {t.about.experience.jobTitle}
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-3">
-                                Building innovative solutions and contributing to various projects
+                                {t.about.experience.description}
                             </p>
                             <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                                <li>Developed full-stack applications using modern technologies</li>
-                                <li>Contributed to open-source projects on GitHub</li>
-                                <li>Implemented AI-powered features and automation tools</li>
+                                {t.about.experience.points.map((point, index) => (
+                                    <li key={index}>{point}</li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -44,19 +48,9 @@ export default function AboutPage() {
 
                 {/* Skills */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Skills</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.about.skills.title}</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {[
-                            'Python',
-                            'JavaScript/TypeScript',
-                            'React/Next.js',
-                            'Node.js',
-                            'Git',
-                            'AI/ML',
-                            'Web Development',
-                            'Problem Solving',
-                            'Team Collaboration'
-                        ].map((skill) => (
+                        {t.about.skills.list.map((skill) => (
                             <div
                                 key={skill}
                                 className="bg-gray-100 dark:bg-gray-800 rounded-lg px-4 py-3 text-center font-medium text-gray-900 dark:text-white hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
@@ -69,9 +63,9 @@ export default function AboutPage() {
 
                 {/* Contact */}
                 <section>
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.about.contact.title}</h2>
                     <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                        I'm always open to interesting conversations and collaboration opportunities. Feel free to reach out!
+                        {t.about.contact.description}
                     </p>
                     <div className="flex flex-wrap gap-4">
                         <a

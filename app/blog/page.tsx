@@ -1,32 +1,35 @@
-import { BlogCategory } from '@/types';
-import Link from 'next/link';
+'use client';
 
-const blogCategories: BlogCategory[] = [
-    {
-        title: 'Travel',
-        description: 'Explore my travel experiences, adventures, and stories from around the world',
-        url: 'https://wiry-timpani-17d.notion.site/Travel-89db0fec704844f4b5328143937a6181',
-        icon: '✈️',
-    },
-    {
-        title: 'Book',
-        description: 'My reading journey, book reviews, and literary reflections',
-        url: 'https://wiry-timpani-17d.notion.site/6332c78168974b94b904cafa520ac90d?v=faa56ea0ba4842fcbd78a339b97fee96',
-        icon: '📚',
-    },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function BlogPage() {
+    const { t } = useLanguage();
+
+    const blogCategories = [
+        {
+            title: t.blog.travel.title,
+            description: t.blog.travel.description,
+            url: 'https://wiry-timpani-17d.notion.site/Travel-89db0fec704844f4b5328143937a6181',
+            icon: '✈️',
+        },
+        {
+            title: t.blog.book.title,
+            description: t.blog.book.description,
+            url: 'https://wiry-timpani-17d.notion.site/6332c78168974b94b904cafa520ac90d?v=faa56ea0ba4842fcbd78a339b97fee96',
+            icon: '📚',
+        },
+    ];
+
     return (
         <div className="bg-white dark:bg-gray-900 min-h-screen">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                        My Blog
+                        {t.blog.title}
                     </h1>
                     <p className="text-xl text-gray-600 dark:text-gray-400">
-                        Thoughts on travel, books, and life organization
+                        {t.blog.subtitle}
                     </p>
                 </div>
 
@@ -49,7 +52,7 @@ export default function BlogPage() {
                                     {category.description}
                                 </p>
                                 <div className="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium">
-                                    Read More
+                                    {t.blog.readMore}
                                     <svg className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
@@ -62,13 +65,13 @@ export default function BlogPage() {
                     <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-xl p-8 shadow-lg border border-gray-300 dark:border-gray-700 opacity-75">
                         <div className="text-6xl mb-4">🧠</div>
                         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                            LifeOS
+                            {t.blog.lifeos.title}
                         </h2>
                         <p className="text-gray-600 dark:text-gray-400 mb-4">
-                            My personal life organization system and productivity insights
+                            {t.blog.lifeos.description}
                         </p>
                         <div className="inline-flex items-center text-gray-500 dark:text-gray-500 font-medium">
-                            Coming Soon
+                            {t.blog.comingSoon}
                         </div>
                     </div>
                 </div>
@@ -76,7 +79,7 @@ export default function BlogPage() {
                 {/* Note */}
                 <div className="mt-16 text-center">
                     <p className="text-gray-600 dark:text-gray-400">
-                        All blog posts are hosted on Notion. Click on any category to explore my writings.
+                        {t.blog.note}
                     </p>
                 </div>
             </div>
