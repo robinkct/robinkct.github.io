@@ -3,13 +3,13 @@ export default function BlogPage() {
         {
             title: 'Travel',
             description: 'Explore my travel experiences, adventures, and stories from around the world',
-            url: 'https://www.notion.so/robinkuo/Travel-89db0fec704844f4b5328143937a6181',
+            url: '/travel',
             icon: '✈️',
         },
         {
             title: 'Book',
             description: 'My reading journey, book reviews, and literary reflections',
-            url: 'https://www.notion.so/robinkuo/6332c78168974b94b904cafa520ac90d?v=faa56ea0ba4842fcbd78a339b97fee96',
+            url: '/book',
             icon: '📚',
         },
     ];
