@@ -1,0 +1,32 @@
+export interface GitHubRepo {
+    id: number;
+    name: string;
+    full_name: string;
+    description: string | null;
+    html_url: string;
+    homepage: string | null;
+    language: string | null;
+    stargazers_count: number;
+    forks_count: number;
+    topics: string[];
+    created_at: string;
+    updated_at: string;
+}
+
+export interface Project {
+    id: number;
+    title: string;
+    description: string;
+    url: string;
+    homepage?: string;
+    language?: string;
+    stars: number;
+    topics: string[];
+}
+
+export interface BlogCategory {
+    title: string;
+    description: string;
+    url: string;
+    icon: string;
+}
