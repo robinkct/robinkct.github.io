@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Language, Translations } from '@/lib/i18n';
+import { Language, AboutTranslations } from '@/lib/i18n';
 import { zhTW } from '@/locales/zh-TW';
 import { en } from '@/locales/en';
 import { ja } from '@/locales/ja';
@@ -9,12 +9,12 @@ import { ja } from '@/locales/ja';
 interface LanguageContextType {
     language: Language;
     setLanguage: (lang: Language) => void;
-    t: Translations;
+    t: AboutTranslations;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const translations: Record<Language, Translations> = {
+const translations: Record<Language, AboutTranslations> = {
     'zh-TW': zhTW,
     'en': en,
     'ja': ja,

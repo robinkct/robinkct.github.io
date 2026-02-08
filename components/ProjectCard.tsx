@@ -1,16 +1,11 @@
-'use client';
-
 import { Project } from '@/types';
 import Link from 'next/link';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ProjectCardProps {
     project: Project;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-    const { t } = useLanguage();
-
     return (
         <div className="group relative bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <div className="flex flex-col h-full">
@@ -55,7 +50,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline"
                     >
-                        {t.projects.viewCode}
+                        View Code
                         <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
@@ -67,7 +62,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                             rel="noopener noreferrer"
                             className="inline-flex items-center text-sm text-green-600 dark:text-green-400 hover:underline"
                         >
-                            {t.projects.liveDemo}
+                            Live Demo
                             <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>

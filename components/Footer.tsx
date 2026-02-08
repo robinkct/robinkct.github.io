@@ -1,11 +1,6 @@
-'use client';
-
 import Link from 'next/link';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Footer() {
-    const { t } = useLanguage();
-
     return (
         <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -14,27 +9,27 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Robin Kuo</h3>
                         <p className="text-gray-600 dark:text-gray-400 text-sm">
-                            {t.footer.description}
+                            Software Engineer passionate about building innovative solutions and sharing knowledge.
                         </p>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t.footer.quickLinks}</h3>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
                         <ul className="space-y-2">
                             <li>
                                 <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
-                                    {t.nav.about}
+                                    About Me
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/projects" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
-                                    {t.nav.projects}
+                                    Projects
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
-                                    {t.nav.blog}
+                                    Blog
                                 </Link>
                             </li>
                         </ul>
@@ -42,7 +37,7 @@ export default function Footer() {
 
                     {/* Social Links */}
                     <div>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t.footer.connect}</h3>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect</h3>
                         <div className="flex space-x-4">
                             <a
                                 href="https://github.com/robinkct"
@@ -72,7 +67,7 @@ export default function Footer() {
 
                 <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
                     <p className="text-center text-gray-600 dark:text-gray-400 text-sm">
-                        © {new Date().getFullYear()} Robin Kuo. {t.footer.copyright}.
+                        © {new Date().getFullYear()} Robin Kuo. All rights reserved.
                     </p>
                 </div>
             </div>

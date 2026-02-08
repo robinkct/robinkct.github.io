@@ -1,44 +1,116 @@
 'use client';
 
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useState, useEffect } from 'react';
+import { Language, AboutTranslations, languages } from '@/lib/i18n';
+import { zhTW } from '@/locales/zh-TW';
+import { en } from '@/locales/en';
+import { ja } from '@/locales/ja';
+
+const translations: Record<Language, AboutTranslations> = {
+    'zh-TW': zhTW,
+    'en': en,
+    'ja': ja,
+};
 
 export default function AboutPage() {
-    const { t } = useLanguage();
+    const [language, setLanguageState] = useState<Language>('zh-TW');
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem('aboutLanguage') as Language;
+        if (savedLanguage && translations[savedLanguage]) {
+            setLanguageState(savedLanguage);
+        }
+    }, []);
+
+    const setLanguage = (lang: Language) => {
+        setLanguageState(lang);
+        localStorage.setItem('aboutLanguage', lang);
+        setIsOpen(false);
+    };
+
+    const t = translations[language];
+    const currentLanguage = languages.find(lang => lang.code === language);
 
     return (
         <div className="bg-white dark:bg-gray-900">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                {/* Language Switcher - Top Right */}
+                <div className="flex justify-end mb-8">
+                    <div className="relative">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="flex items-center gap-2 px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            aria-label="Change language"
+                        >
+                            <span className="text-xl">{currentLanguage?.flag}</span>
+                            <span className="text-sm font-medium">{currentLanguage?.name}</span>
+                            <svg
+                                className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        {isOpen && (
+                            <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50">
+                                {languages.map((lang) => (
+                                    <button
+                                        key={lang.code}
+                                        onClick={() => setLanguage(lang.code)}
+                                        className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${language === lang.code ? 'bg-blue-50 dark:bg-blue-900/20' : ''
+                                            }`}
+                                    >
+                                        <span className="text-xl">{lang.flag}</span>
+                                        <span className="text-sm font-medium text-gray-900 dark:text-white">
+                                            {lang.name}
+                                        </span>
+                                        {language === lang.code && (
+                                            <svg className="ml-auto h-4 w-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                        {t.about.title}
+                        {t.title}
                     </h1>
                     <p className="text-xl text-gray-600 dark:text-gray-400">
-                        {t.about.subtitle}
+                        {t.subtitle}
                     </p>
                 </div>
 
                 {/* Introduction */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.about.introduction.title}</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.introduction.title}</h2>
                     <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                        {t.about.introduction.content}
+                        {t.introduction.content}
                     </p>
                 </section>
 
                 {/* Experience */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.about.experience.title}</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.experience.title}</h2>
                     <div className="space-y-8">
                         <div className="border-l-4 border-blue-600 pl-6">
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                {t.about.experience.jobTitle}
+                                {t.experience.jobTitle}
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-3">
-                                {t.about.experience.description}
+                                {t.experience.description}
                             </p>
                             <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                                {t.about.experience.points.map((point, index) => (
+                                {t.experience.points.map((point, index) => (
                                     <li key={index}>{point}</li>
                                 ))}
                             </ul>
@@ -48,9 +120,9 @@ export default function AboutPage() {
 
                 {/* Skills */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.about.skills.title}</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.skills.title}</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {t.about.skills.list.map((skill) => (
+                        {t.skills.list.map((skill) => (
                             <div
                                 key={skill}
                                 className="bg-gray-100 dark:bg-gray-800 rounded-lg px-4 py-3 text-center font-medium text-gray-900 dark:text-white hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
@@ -63,9 +135,9 @@ export default function AboutPage() {
 
                 {/* Contact */}
                 <section>
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.about.contact.title}</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t.contact.title}</h2>
                     <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                        {t.about.contact.description}
+                        {t.contact.description}
                     </p>
                     <div className="flex flex-wrap gap-4">
                         <a

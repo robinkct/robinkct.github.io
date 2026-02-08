@@ -1,34 +1,29 @@
-'use client';
-
 import Link from 'next/link';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
-  const { t } = useLanguage();
-
   return (
     <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-black">
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
         <div className="text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
-            {t.home.greeting} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{t.home.name}</span>
+            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Robin Kuo</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-            {t.home.tagline}
+            Software Engineer passionate about building innovative solutions and sharing knowledge
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/about"
               className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
             >
-              {t.home.aboutMe}
+              About Me
             </Link>
             <Link
               href="/projects"
               className="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-700 rounded-lg hover:border-blue-600 dark:hover:border-blue-400 transition-colors font-medium"
             >
-              {t.home.viewProjects}
+              View Projects
             </Link>
           </div>
         </div>
@@ -46,10 +41,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                {t.home.aboutCard.title}
+                About Me
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                {t.home.aboutCard.description}
+                Learn about my background, experience, and skills
               </p>
             </div>
           </Link>
@@ -63,10 +58,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                {t.home.projectsCard.title}
+                Projects
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                {t.home.projectsCard.description}
+                Explore my GitHub projects and open source contributions
               </p>
             </div>
           </Link>
@@ -80,10 +75,10 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                {t.home.blogCard.title}
+                Blog
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                {t.home.blogCard.description}
+                Read my thoughts on travel, books, and life organization
               </p>
             </div>
           </Link>
