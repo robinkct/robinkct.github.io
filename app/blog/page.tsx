@@ -3,13 +3,13 @@ export default function BlogPage() {
         {
             title: 'Travel',
             description: 'Explore my travel experiences, adventures, and stories from around the world',
-            url: '/travel',
+            url: '/blog/travel',
             icon: '✈️',
         },
         {
             title: 'Book',
             description: 'My reading journey, book reviews, and literary reflections',
-            url: '/book',
+            url: '/blog/book',
             icon: '📚',
         },
     ];
