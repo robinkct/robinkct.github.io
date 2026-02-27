@@ -3,7 +3,7 @@ export default function BlogPage() {
         {
             title: 'Travel',
             description: 'Explore my travel experiences, adventures, and stories from around the world',
-            url: '/blog/travel',
+            url: 'https://travel.robinkct.com/',
             icon: '✈️',
         },
         {
@@ -11,6 +11,12 @@ export default function BlogPage() {
             description: 'My reading journey, book reviews, and literary reflections',
             url: '/blog/book',
             icon: '📚',
+        },
+        {
+            title: 'Brevity',
+            description: 'Short thoughts, daily reflections, and quick notes and all posts',
+            url: 'https://brevity.robinkct.com/',
+            icon: '📁',
         },
     ];
 
