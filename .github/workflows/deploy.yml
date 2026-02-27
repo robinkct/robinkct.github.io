@@ -37,7 +37,9 @@ jobs:
       - name: Build with Next.js
         run: npm run build
         env:
-          NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
+          # Note: NEXT_PUBLIC_ vars are safe to expose inside the repository 
+          # as they are bundled into the client-side code anyway.
+          NEXT_PUBLIC_UMAMI_WEBSITE_ID: "d65b7cc5-7173-4d5a-91cb-feb0a55140f2"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
