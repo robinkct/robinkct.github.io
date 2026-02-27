@@ -30,12 +30,14 @@ export default function RootLayout({
         <Footer />
 
         {/* Umami Analytics */}
-        <Script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="d65b7cc5-7173-4d5a-91cb-feb0a55140f2"
-          strategy="afterInteractive"
-        />
+        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+          <Script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );
