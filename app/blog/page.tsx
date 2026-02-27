@@ -9,7 +9,7 @@ export default function BlogPage() {
         {
             title: 'Book',
             description: 'My reading journey, book reviews, and literary reflections',
-            url: '/blog/book',
+            url: 'https://book.robinkct.com/',
             icon: '📚',
         },
         {
@@ -17,6 +17,12 @@ export default function BlogPage() {
             description: 'Short thoughts, daily reflections, and quick notes and all posts',
             url: 'https://brevity.robinkct.com/',
             icon: '📁',
+        },
+        {
+            title: 'LifeOS',
+            description: 'My personal life organization system and productivity insights',
+            url: 'https://ntnnx.robinkct.com/',
+            icon: '🧠',
         },
     ];
 
@@ -60,20 +66,6 @@ export default function BlogPage() {
                             </div>
                         </a>
                     ))}
-
-                    {/* Coming Soon Card for LifeOS */}
-                    <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-xl p-8 shadow-lg border border-gray-300 dark:border-gray-700 opacity-75">
-                        <div className="text-6xl mb-4">🧠</div>
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                            LifeOS
-                        </h2>
-                        <p className="text-gray-600 dark:text-gray-400 mb-4">
-                            My personal life organization system and productivity insights
-                        </p>
-                        <div className="inline-flex items-center text-gray-500 dark:text-gray-500 font-medium">
-                            Coming Soon
-                        </div>
-                    </div>
                 </div>
 
                 {/* Note */}
