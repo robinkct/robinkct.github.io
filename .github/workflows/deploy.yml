@@ -42,7 +42,7 @@ jobs:
           NEXT_PUBLIC_UMAMI_WEBSITE_ID: "d65b7cc5-7173-4d5a-91cb-feb0a55140f2"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./out
 
